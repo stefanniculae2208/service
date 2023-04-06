@@ -7,6 +7,8 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 import ro.unibuc.hello.data.ArtistRepository;
 import ro.unibuc.hello.data.ArtistEntity;
+import ro.unibuc.hello.data.UserRepository;
+import ro.unibuc.hello.data.UserEntity;
 import ro.unibuc.hello.data.InformationEntity;
 import ro.unibuc.hello.data.InformationRepository;
 

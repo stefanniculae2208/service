@@ -21,5 +21,6 @@ public class UserService {
     public UserEntity getUser(String name){
         return userRepository.findByName(name);
     }
+
 }
 

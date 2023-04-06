@@ -14,6 +14,8 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import ro.unibuc.hello.dto.Greeting;
 import ro.unibuc.hello.dto.UserDto;
+import ro.unibuc.hello.data.UserEntity;
+import ro.unibuc.hello.data.UserRepository;
 import ro.unibuc.hello.exception.EntityNotFoundException;
 import ro.unibuc.hello.service.UserService;
 
@@ -46,19 +48,20 @@ class UserControllerTest {
     @Test
     void test_getUser() throws Exception {
         // Arrange
-        UserDto userDto = new UserDto(1, "Stefan","stefan@mail.com","Brasov","074 888 943");
+        //UserDto userDto = new UserDto(1, "Stefan","stefan@mail.com","Brasov","074 888 943");
+        UserEntity userEnt = new UserEntity("Stefan","stefan@mail.com","Brasov","074 888 943");
 
-        when(userService.getUser(any())).thenReturn(userDto.getName());
+        when(userService.getUser(any())).thenReturn(userEnt);
 
         // Act
         MvcResult result = mockMvc.perform(get("/users?name=there")
-                .content(objectMapper.writeValueAsString(userDto))
+                .content(objectMapper.writeValueAsString(userEnt))
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andReturn();
 
         // Assert
-        Assertions.assertEquals(result.getResponse().getContentAsString(), objectMapper.writeValueAsString(userDto));
+        Assertions.assertEquals(result.getResponse().getContentAsString(), objectMapper.writeValueAsString(userEnt));
     }
 
     

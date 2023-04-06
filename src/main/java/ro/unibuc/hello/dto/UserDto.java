@@ -17,7 +17,7 @@ public class UserDto {
         this.id = id;
         this.name = name;
         this.email = email;
-        this.address = addrss;
+        this.address = address;
         this.phone = phone;
     }
 
